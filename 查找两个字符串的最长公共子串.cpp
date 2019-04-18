@@ -24,9 +24,9 @@ int main()
         swap(s1,s2);
         }
         string ret;
-        for(int i=0;i<s2.size();i++)
+        for(size_t  i=0;i<s2.size();i++)
         {
-           for(int j=i;j<s2.size();j++)
+           for(size_t  j=i;j<s2.size();j++)
            {
                string tmp=s2.substr(i,j-i+1);
                if(int(s1.find(tmp))<0)
