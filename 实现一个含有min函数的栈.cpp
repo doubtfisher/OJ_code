@@ -1,4 +1,5 @@
-定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数（时间复杂度应为O（1））
+题目：
+定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数，时间复杂度应为O（1）
 
 class Solution {
 public:
@@ -15,6 +16,7 @@ public:
             st2.push(value);
         }
     }
+
     void pop()
     {
         if(st1.top()==st2.top())
@@ -23,10 +25,12 @@ public:
         }
         st1.pop();
     }
+
     int top() 
     {
        return st1.top(); 
     }
+
     int min() 
     {
        return st2.top(); 
