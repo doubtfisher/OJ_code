@@ -57,22 +57,14 @@ public:
     }
 };
 
-方法2：不用计算长度
 
-/*
-struct ListNode {
-	int val;
-	struct ListNode *next;
-	ListNode(int x) :
-			val(x), next(NULL) {
-	}
-};*/
+方法2：不用计算两个链表的长度，直接判断
 
 class Solution {
 public:
     ListNode* FindFirstCommonNode( ListNode* pHead1, ListNode* pHead2) {
-
-        ListNode* cur1 = pHead1;
+       
+     ListNode* cur1 = pHead1;
         ListNode* cur2 = pHead2;
         while(cur1 != cur2)
         {
