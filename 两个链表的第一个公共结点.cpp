@@ -57,6 +57,33 @@ public:
     }
 };
 
+方法2：不用计算长度
+
+/*
+struct ListNode {
+	int val;
+	struct ListNode *next;
+	ListNode(int x) :
+			val(x), next(NULL) {
+	}
+};*/
+
+class Solution {
+public:
+    ListNode* FindFirstCommonNode( ListNode* pHead1, ListNode* pHead2) {
+
+        ListNode* cur1 = pHead1;
+        ListNode* cur2 = pHead2;
+        while(cur1 != cur2)
+        {
+            cur1 = (cur1 == NULL ? pHead2 : cur1->next);
+            cur2 = (cur2 == NULL ? pHead1 : cur2->next);
+        }
+        
+        return cur1;
+    }
+};
+
 
 
 
