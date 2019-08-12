@@ -4,7 +4,6 @@
 输入包含T个测试用例，每行为一个测试用例，一个测试用例包含N个数，
 按照每个数中的二进制位为1的个数来分类，输出每组数据中可以分为几类。
 
-
 #include <iostream>
 #include <vector>
 using namespace std;
