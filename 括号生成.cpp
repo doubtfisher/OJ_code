@@ -6,22 +6,30 @@
 
 class Solution {
 public:
-vector<string> ans;
-int N;
-    
-void dfs(int l,int r,string has){
-    if(r>l)return;
-    if(l > N)return;
-    if(l == r&& r == N){
-        ans.push_back(has);return;
+    int N;//定义一个全局变量
+    void dfs(int left,int right,string s,vector<string>& ret)
+    {
+        
+        if(right>left)//如果右括号比左括号多，说明无效,则返回
+            return;
+        if(left>N)//如果左括号数量超过N，则与题意不符，返回
+            return;
+        if(left==right&&right==N)//如果左右括号都达到了指定数量，则可以将其添加到数组中保存
+        {
+            ret.push_back(s);
+            return;
+        }
+        //如果以上条件都没有满足，则尝试加入新的左括号和右括号
+        dfs(left+1,right,s+"(",ret);
+        dfs(left,right+1,s+")",ret);
     }
-    dfs(l+1,r,has + "(");
-    dfs(l,r+1,has + ")");
-}
     
-vector<string> generateParenthesis(int n){
-    N=n;if(!N)return {};
-    dfs(0,0,"");
-    return ans;
-}
+    vector<string> generateParenthesis(int n) {
+        N=n;
+        if(N<0)
+            return {};
+        vector<string> ret;
+        dfs(0,0,"",ret);
+        return ret;
+    }
 };
