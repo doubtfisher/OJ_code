@@ -30,16 +30,50 @@
 
 
 代码实现：
+（1）暴力求解
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        int max_price=0;
-        for(int i=0;i<prices.size();i++){
-            for(int j=i+1;j<prices.size();j++){
-                if(prices[j]>prices[i])
-                    max_price=max(max_price,prices[j]-prices[i]);
+        int size=prices.size();
+        int max=0;//最大利润
+        for(int i=0;i<size;i++)
+        {
+            int tmp=0;
+            for(int j=i+1;j<size;j++)
+            {
+                if(prices[i]<prices[j])
+                {
+                    tmp=prices[j]-prices[i];
+                    max=max<tmp?tmp:max;
+                }
             }
         }
-        return max_price;
+        return max;
+    }
+};
+
+
+（2）堆栈法
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {      
+        int size=prices.size();
+        int max=0;//最大利润
+        stack<int> st;
+        st.push(10000);//这里第一个数字不够大的话，会有部分数据放不进去，其实10000是试出来的（捂脸）
+        
+        for(int i=0;i<size;i++)
+        {
+            if(prices[i]<st.top())//栈满足先进后出，后面进来的在栈顶，即买入的价格大于卖出的
+                st.push(prices[i]);
+            else
+            {
+                int tmp=prices[i]-st.top();
+                max=max<tmp?tmp:max;   
+            }
+                        
+        }
+        return max;        
     }
 };
