@@ -40,7 +40,7 @@ public:
                 q1.push(q2.front());
                 q2.pop();
             }
-            int top=q2.front();//两个队列进行来回倒时，要保证最终始终有一个栈为空
+            int top=q2.front();//两个队列进行来回倒时，要保证最终始终有一个队列为空
             q2.pop();
             return top;
         }
@@ -52,7 +52,7 @@ public:
                 q2.push(q1.front());
                 q1.pop();
             }
-            int top=q1.front();//两个队列进行来回倒时，要保证最终始终有一个栈为空
+            int top=q1.front();//两个队列进行来回倒时，要保证最终始终有一个队列为空
             q1.pop();
             return top;
         }
