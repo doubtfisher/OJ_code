@@ -37,3 +37,33 @@ public:
         return head;
     }
 };
+
+方法2：快慢指针
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        if(head==nullptr)
+            return head;
+        ListNode* prev=nullptr;
+        ListNode* slow=head;
+        ListNode* fast=slow;
+        while(n--)
+        {
+            if(fast)
+                fast=fast->next;
+            else//n大于结点个数
+                return head;
+        }
+        while(fast)
+        {
+            prev=slow;
+            slow=slow->next;
+            fast=fast->next;
+        }
+        if(prev==nullptr)//删除的是头结点
+            head=slow->next;
+        else
+            prev->next=slow->next;
+        return head;
+    }
+};
